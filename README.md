@@ -1,5 +1,5 @@
 ### Multirtail
-This utility watches logfiles and pipes the new lines to rtail stdin.
+This utility watches logfiles and pipes the new lines to rtail (https://github.com/kilianc/rtail) stdin.
 
 By default, it uses the name of the logfile for the stream-id.
 
