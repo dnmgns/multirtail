@@ -1,6 +1,8 @@
 ### Multirtail
 This utility watches logfiles and pipes the new lines to rtail stdin.
 
+By default, it uses the name of the logfile for the stream-id.
+
 ### Setup
 Copy `config-template.yml` to `config.yml` and edit `config.yml` in your favorite text editor.
 
