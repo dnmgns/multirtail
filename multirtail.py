@@ -74,9 +74,9 @@ class Multirtail(pyinotify.ProcessEvent):
 
         for line in lines:
             if self.config['multirtail']['showid']:
-                logline = ('%s \n' % file_id)
-            else:
                 logline = ('[%s] %s \n' % file_id, line)
+            else:
+                logline = ('%s \n' % line)
                 
             stdin = p.stdin.write(logline)
             if self.config['multirtail']['debug']:
