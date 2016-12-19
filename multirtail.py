@@ -60,8 +60,9 @@ class Multirtail(pyinotify.ProcessEvent):
             print "%s changed" % pathname, "\n".join(lines)
 
         args = []
+        file_id = basename(pathname)
         args.extend([self.config['rtail']['cmd'],
-                     '--id', basename(pathname), '--host',
+                     '--id', file_id, '--host',
                      self.config['rtail']['host']])
         args += shlex.split(self.config['rtail']['args'])
 
@@ -72,7 +73,11 @@ class Multirtail(pyinotify.ProcessEvent):
             p = Popen(args, stdin=PIPE, stdout=f)
 
         for line in lines:
-            logline = (line + '\n')
+            if self.config['multirtail']['showid']:
+                logline = ('%s \n' % file_id)
+            else:
+                logline = ('[%s] %s \n' % file_id, line)
+                
             stdin = p.stdin.write(logline)
             if self.config['multirtail']['debug']:
                 print "Pid: %s" % p.pid

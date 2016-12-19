@@ -2,6 +2,7 @@ multirtail:
     paths: ['/path/to/many/logs/*', '/path/to/one.log']
     debug: False
     showchanges: False
+    showid: True
 rtail:
     cmd: './node_modules/rtail/cli/rtail-client.js'
     args: '--parse-date false'
