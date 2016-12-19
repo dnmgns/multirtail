@@ -13,6 +13,7 @@ multirtail:
     paths: <single/multiple file(s)/path(s)>
     debug: <False or True>
     showchanges: <False or True>
+    showid: <False or True>
 rtail:
     cmd: <path to the rtail-client>
     args: <any argument for rtail-client>
