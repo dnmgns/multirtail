@@ -70,7 +70,7 @@ class Multirtail(pyinotify.ProcessEvent):
             p = Popen(args, stdin=PIPE)
         else:
             f = open(os.devnull, 'w')
-            p = Popen(args, stdin=PIPE, stdout=f)
+            p = Popen(args, stdin=PIPE, stdout=f, close_fds = True)
 
         for line in lines:
             if self.config['multirtail']['showid']:
@@ -83,6 +83,7 @@ class Multirtail(pyinotify.ProcessEvent):
                 print "Pid: {0}".format(p.pid)
                 print "Stdin: {0}".format(stdin)
         p.stdin.close()
+        p.wait()
         self._paths[pathname][1] = buf
 
 def main():
